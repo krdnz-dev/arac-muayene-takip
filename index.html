@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f172a"><title>Araç Muayene Takip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<section id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-logo">🚘</div><span class="login-kicker">FİLO YÖNETİM SİSTEMİ</span>
+    <h1>Araç Muayene Takip</h1><p>Yetkili kullanıcı girişi</p>
+    <form id="loginForm"><label>E-posta<input type="email" id="email" required autocomplete="username" placeholder="E-posta adresiniz"></label><label>Şifre<input type="password" id="password" required autocomplete="current-password" placeholder="••••••••"></label><button class="primary full" type="submit">Giriş Yap <span>→</span></button></form>
+  </div>
+</section>
+
+<section id="app" class="hidden">
+<header class="topbar"><div class="brand"><span class="brand-icon">🚘</span><div><h1>Araç Muayene Takip</h1><small>Filo yönetim paneli</small></div></div><button id="logout" class="logout">Çıkış Yap <span>↗</span></button></header>
+<main>
+  <div id="dashboardView">
+    <section class="welcome"><div><span class="eyebrow">GENEL BAKIŞ</span><h2>Araçlarınız</h2><p>Şirketlerinizi ve muayene durumlarını buradan takip edin.</p></div><button id="add" class="primary add-main">＋ Araç Ekle</button></section>
+    <section class="stats"><div class="stat blue"><div><span>Toplam Araç</span><b id="total">0</b><small>Tüm kayıtlar</small></div><i>🚘</i></div><div class="stat green"><div><span>Geçerli</span><b id="valid">0</b><small>Muayenesi devam ediyor</small></div><i>✓</i></div><div class="stat amber"><div><span>30 Gün İçinde</span><b id="soon">0</b><small>Yaklaşan muayeneler</small></div><i>⏳</i></div><div class="stat red"><div><span>Süresi Geçmiş</span><b id="expired">0</b><small>Acil işlem gerekenler</small></div><i>!</i></div></section>
+    <section class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search" placeholder="Şirket, plaka, ruhsat seri no veya konum ara..." autocomplete="off"></div></section>
+    <div class="section-heading"><div><h3>Şirketler</h3><span id="companyCount">0 şirket</span></div></div>
+    <section id="list" class="company-list"></section>
+    <section id="empty" class="empty hidden"><div>🚘</div><h2>Henüz araç eklenmedi</h2><p>İlk aracı eklemek için “Araç Ekle” butonunu kullan.</p></section>
+  </div>
+
+  <div id="companyView" class="hidden">
+    <div class="detail-top"><button id="backCompanies" class="back-btn">← Şirketlere Dön</button><button id="addCompanyVehicle" class="primary">＋ Bu Şirkete Araç Ekle</button></div>
+    <section class="company-hero"><div class="company-hero-icon">🏢</div><div><span class="eyebrow">ŞİRKET DETAYI</span><h2 id="detailCompanyName">-</h2><p id="detailCompanyMeta">-</p></div></section>
+    <div class="detail-summary"><div><span>Toplam Araç</span><b id="detailTotal">0</b></div><div><span>Geçerli</span><b id="detailValid">0</b></div><div><span>Yaklaşan</span><b id="detailSoon">0</b></div><div><span>Süresi Geçmiş</span><b id="detailExpired">0</b></div></div>
+    <div class="section-heading"><div><h3>Araçlar</h3><span>Şirkete kayıtlı araçlar</span></div></div>
+    <section id="detailList" class="vehicle-list"></section>
+  </div>
+</main>
+</section>
+
+<div id="modal" class="overlay hidden"><div class="modal"><div class="modal-title"><div><span class="eyebrow">KAYIT</span><h2 id="modalTitle">Araç Ekle</h2></div><button id="close">×</button></div><form id="form"><input id="id" type="hidden"><label>Şirket<input id="company" required placeholder="Şirket adı"></label><label>Plaka<input id="plate" required placeholder="61 ABC 123"></label><div class="two"><label>Ruhsat Seri No<input id="serial" placeholder="TR123456"></label><label>Konum<input id="location" placeholder="Trabzon / Merkez"></label></div><div class="two"><label>Muayene Yapılış<input id="inspection" type="date" required></label><label>Muayene Bitiş<input id="expiry" type="date" required></label></div><label>Not<textarea id="notes" rows="3" placeholder="İsteğe bağlı not..."></textarea></label><div class="actions"><button type="button" id="cancel" class="secondary">İptal</button><button class="primary">Kaydet</button></div></form></div></div>
+<div id="toast"></div><script src="app.js"></script>
+</body></html>

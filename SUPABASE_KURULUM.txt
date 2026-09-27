@@ -1,0 +1,16 @@
+SUPABASE BAĞLANTISI HAZIR
+
+Bu sürüm Supabase Auth ve public.vehicles tablosu ile çalışacak şekilde hazırlanmıştır.
+
+Supabase projesi:
+https://xhhgtvigzhqymvpiszfm.supabase.co
+
+Siteye giriş için Supabase Authentication > Users bölümünde oluşturduğunuz hesap kullanılacaktır.
+
+ÖNEMLİ:
+- Bu sitede Sign Up / kayıt ekranı yoktur.
+- Kullanıcı oluşturma Supabase panelinden yapılır.
+- service_role / secret key siteye eklenmemiştir.
+- vehicles tablosunda RLS aktif olmalıdır.
+
+GitHub Pages'e yüklemeden önce index.html, style.css ve app.js dosyalarını birlikte yükleyin.
